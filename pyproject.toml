@@ -10,6 +10,7 @@ click = "^7.1.2"
 requests = "^2.23.0"
 
 [tool.poetry.dev-dependencies]
+pytest = "^5.4.2"
 
 [tool.poetry.scripts]
 vidgen = "vidgen.console:main"
