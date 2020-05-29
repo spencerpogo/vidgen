@@ -11,6 +11,8 @@ requests = "^2.23.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.2"
+coverage = {extras = ["toml"], version = "^5.1"}
+pytest-cov = "^2.9.0"
 
 [tool.poetry.scripts]
 vidgen = "vidgen.console:main"
@@ -18,3 +20,12 @@ vidgen = "vidgen.console:main"
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["vidgen"]
+
+[tool.coverage.report]
+show_missing = true
