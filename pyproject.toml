@@ -25,6 +25,7 @@ mypy = "^0.770"
 pytype = {version = "^2020.5.13", python = "3.7"}
 flake8-annotations = "^2.1.0"
 flake8-docstrings = "^1.5.0"
+darglint = "^1.3.1"
 
 [tool.poetry.scripts]
 vidgen = "vidgen.console:main"
