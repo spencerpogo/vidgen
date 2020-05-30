@@ -1,3 +1,4 @@
+"""Command line interface"""
 import click
 
 from . import __version__
