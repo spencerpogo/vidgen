@@ -1,5 +1,6 @@
 """Nox sessions."""
 import tempfile
+from typing import Any
 
 import nox
 from nox.sessions import Session
@@ -10,7 +11,7 @@ locations = "src", "tests", "noxfile.py"
 nox.options.sessions = "lint", "mypy", "pytype", "tests"
 
 
-def install_with_constraints(session: Session, *args: str, **kwargs: any) -> None:
+def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
     """Install packages contrained by poetry's lock file."""
     with tempfile.NamedTemporaryFile() as requirements:
         session.run(
@@ -97,5 +98,5 @@ def pytype(session: Session) -> None:
 @nox.session(python="3.8")
 def docs(session: Session) -> None:
     """Build the documentation."""
-    install_with_constraints(session, "sphinx")
+    session.run("poetry", "install", external=True)
     session.run("sphinx-build", "docs", "docs/_build")

@@ -6,6 +6,7 @@ Vidgen
    :maxdepth: 1
 
    license
+   reference
 
 Vidgen is a python video generator.
 
