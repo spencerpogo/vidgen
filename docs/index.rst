@@ -1,6 +1,12 @@
 Vidgen
 ======
 
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   license
+
 Vidgen is a python video generator.
 
 
