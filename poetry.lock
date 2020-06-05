@@ -122,7 +122,7 @@ requests = ">=2.7.9"
 [[package]]
 category = "dev"
 description = "Cross-platform colored terminal text."
-marker = "sys_platform == \"win32\" or platform_system == \"Windows\""
+marker = "platform_system == \"Windows\" or sys_platform == \"win32\""
 name = "colorama"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
@@ -609,8 +609,8 @@ description = "Python type inferencer"
 marker = "python_version == \"3.7\""
 name = "pytype"
 optional = false
-python-versions = "<3.8,>=3.5"
-version = "2020.5.13"
+python-versions = "<3.9,>=3.5"
+version = "2020.6.1"
 
 [package.dependencies]
 attrs = "*"
@@ -890,7 +890,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "4c7966a0c5444f96d1152f7bb632b0853111a36e61403d50939ef9e1316112b5"
+content-hash = "4ba658dea92090e951fdf444d716d5c975fefb32d9b014dc6cdfd86b866ab883"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -1181,7 +1181,7 @@ pytest-mock = [
     {file = "pytest_mock-3.1.0-py2.py3-none-any.whl", hash = "sha256:997729451dfc36b851a9accf675488c7020beccda15e11c75632ee3d1b1ccd71"},
 ]
 pytype = [
-    {file = "pytype-2020.5.13.tar.gz", hash = "sha256:e7c968c43df190f54a3ca82b09c026a41aba2d95164ff1ffe61c399bd0e216a5"},
+    {file = "pytype-2020.6.1.tar.gz", hash = "sha256:08ddb9940764492b701a8985c30437239eb2c34003448cca760769264f5ff2f8"},
 ]
 pytz = [
     {file = "pytz-2020.1-py2.py3-none-any.whl", hash = "sha256:a494d53b6d39c3c6e44c3bec237336e14305e4f29bbf800b599253057fbb79ed"},
