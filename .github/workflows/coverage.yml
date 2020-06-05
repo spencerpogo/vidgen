@@ -1,9 +1,7 @@
-name: Release
-on:
-  release:
-    types: [published]
+name: Coverage
+on: push
 jobs:
-  release:
+  coverage:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -13,6 +11,6 @@ jobs:
         architecture: x64
     - run: pip install nox==2019.11.9
     - run: pip install poetry==1.0.5
-    - run: nox
-    - run: poetry build
-    - run: poetry publish --username=__token__ --password=${{ secrets.PYPI_TOKEN }}
+    - run: nox --sessions tests-3.8 coverage
+      env:
+        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
