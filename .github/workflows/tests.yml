@@ -1,20 +1,59 @@
 name: Tests
-on: push
+
+on:
+  - push
+  - pull_request
+
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    name: "${{ matrix.session }} ${{ matrix.python-version }} / ${{ matrix.os }}"
+    runs-on: "${{ matrix.os }}"
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ['3.7', '3.8']
-    name: Python ${{ matrix.python-version }}
+        include:
+          - { python-version: 3.8, os: ubuntu-latest, session: "safety" }
+          - { python-version: 3.8, os: ubuntu-latest, session: "mypy" }
+          - { python-version: 3.7, os: ubuntu-latest, session: "mypy" }
+          - { python-version: 3.8, os: ubuntu-latest, session: "pytype" }
+          - { python-version: 3.7, os: ubuntu-latest, session: "pytype" }
+          - { python-version: 3.8, os: ubuntu-latest, session: "tests" }
+          - { python-version: 3.7, os: ubuntu-latest, session: "tests" }
+          - { python-version: 3.8, os: windows-latest, session: "tests" }
+          - { python-version: 3.8, os: macos-latest, session: "tests" }
+
+    env:
+      NOXSESSION: "${{ matrix.session }}-${{ matrix.python-version }}"
+
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
-        architecture: x64
-    - run: pip install nox==2019.11.9
-    - run: pip install poetry==1.0.5
-    - run: nox --sessions tests-${{ matrix.python-version }} mypy-${{ matrix.python-version }} pytype-${{ matrix.python-version }} coverage
-      env:
-        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+      - name: Check out the repository
+        uses: actions/checkout@v2.1.1
+
+      - name: Set up Python "${{ matrix.python-version }}"
+        uses: actions/setup-python@v2
+        with:
+          python-version: "${{ matrix.python-version }}"
+
+      - name: Upgrade pip
+        run: |
+          pip install pip==20.1.1
+          pip --version
+      - name: Install Poetry
+        run: |
+          pip install poetry==1.0.5
+          poetry --version
+      - name: Install Nox
+        run: |
+          pip install nox==2020.5.24
+          nox --version
+      - name: Run Nox
+        run: |
+          nox --force-color
+
+      - name: Create coverage report
+        if: always() && matrix.session == 'tests'
+        run: |
+          nox --force-color --session=coverage -- xml
+      - name: Upload coverage report
+        if: always() && matrix.session == 'tests'
+        uses: codecov/codecov-action@v1.0.7
