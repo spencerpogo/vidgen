@@ -130,7 +130,7 @@ def mypy(session: Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or locations
     install_package(session)
-    install(session, "mypy")
+    install(session, "mypy", "pytest-mock")
     session.run("mypy", *args)
 
 
