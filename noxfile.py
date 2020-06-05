@@ -12,7 +12,7 @@ from nox.sessions import Session
 
 package = "vidgen"
 python_versions = ["3.8", "3.7"]
-nox.options.sessions = "pre-commit", "safety", "mypy", "tests"
+nox.options.sessions = "pre-commit", "safety", "mypy", "pytype", "tests"
 locations = "src", "tests", "noxfile.py", "docs/conf.py"
 
 
@@ -125,6 +125,32 @@ def safety(session: Session) -> None:
         session.run("safety", "check", f"--file={requirements}", "--bare")
 
 
+@nox.session(python="3.8")
+def black(session: Session) -> None:
+    """Run black code formatter."""
+    args = session.posargs or locations
+    install(session, "black")
+    session.run("black", *args)
+
+
+@nox.session(python=python_versions)
+def lint(session: Session) -> None:
+    """Lint using flake8."""
+    args = session.posargs or locations
+    install(
+        session,
+        "flake8",
+        "flake8-annotations",
+        "flake8-bandit",
+        "flake8-black",
+        "flake8-bugbear",
+        "flake8-docstrings",
+        "flake8-import-order",
+        "darglint",
+    )
+    session.run("flake8", *args)
+
+
 @nox.session(python=python_versions)
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
@@ -132,6 +158,14 @@ def mypy(session: Session) -> None:
     install_package(session)
     install(session, "mypy")
     session.run("mypy", *args)
+
+
+@nox.session(python=python_versions)
+def pytype(session: Session) -> None:
+    """Type-check using pytype."""
+    args = session.posargs or ["--disable=import-error", *locations]
+    install(session, "pytype")
+    session.run("pytype", *args)
 
 
 @nox.session(python=python_versions)

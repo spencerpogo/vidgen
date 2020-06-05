@@ -1,7 +1,9 @@
 [tool.poetry]
 name = "vidgen"
 version = "0.1.0"
-description = ""
+description = "Automatic video generation"
+license = "MIT"
+readme = "README.md"
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
@@ -33,7 +35,8 @@ sphinx-autodoc-typehints = "^1.10.3"
 codecov = "^2.1.3"
 
 [tool.poetry.scripts]
-vidgen = "vidgen.console:main"
+vidgen = "vidgen.console:cli"
+
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
 

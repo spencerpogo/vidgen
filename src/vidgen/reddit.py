@@ -50,16 +50,13 @@ def post_to_dict(
     }
 
     for comment in post.comments:
-        print(comment.is_root)
         if limit is not None and len(data["comments"]) >= limit:
-            print("break")
             break
 
         if not include_children and not comment.is_root:
             continue
 
         text = process_text(comment.body)
-        print(comment.body)
         data["comments"].append(
             {
                 "author": comment.author.name,
