@@ -22,8 +22,8 @@ def process_text(text: str) -> str:
     return text.replace(ZERO_WIDTH_SPACE, "")
 
 
-def get_comments(
-    post: praw.models.Submission, include_children: bool = False, limit: int = 10
+def post_to_dict(
+    post: praw.models.Submission, include_children: bool = False, limit: int = None
 ) -> dict:
     """Processes the top level comments of a reddit post into a json object.
 
@@ -40,12 +40,26 @@ def get_comments(
     """
     # Download all comments
     post.comments.replace_more(limit=0)
-    data = {"id": post.id, "title": post.title, "url": post.url, "comments": []}
+    data = {
+        "id": post.id,
+        "title": post.title,
+        "author": post.author.name,
+        "url": post.url,
+        "votes": post.score,
+        "comments": [],
+    }
+
     for comment in post.comments:
+        print(comment.is_root)
+        if limit is not None and len(data["comments"]) >= limit:
+            print("break")
+            break
+
         if not include_children and not comment.is_root:
             continue
 
         text = process_text(comment.body)
+        print(comment.body)
         data["comments"].append(
             {
                 "author": comment.author.name,
@@ -54,8 +68,5 @@ def get_comments(
                 "body": text,
             }
         )
-
-        if len(data["comments"]) < limit:
-            break
 
     return data
