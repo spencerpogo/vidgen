@@ -1,4 +1,6 @@
 """Reddit downloader test suite."""
+from typing import Callable
+
 from pytest_mock import MockFixture
 
 from vidgen import reddit
@@ -10,7 +12,9 @@ def test_process_text() -> None:
     assert res == "didn't"
 
 
-def test_post_to_dict(mocker: MockFixture) -> None:
+def test_post_to_dict(
+    mocker: MockFixture, check_post_dict: Callable[[dict], None]
+) -> None:
     """The reddit.post_to_dict function suceeds and has the required keys."""
     post = mocker.MagicMock()
 
@@ -24,12 +28,7 @@ def test_post_to_dict(mocker: MockFixture) -> None:
     post.comments.__iter__.return_value = [comment_b, comment_a, comment_a]
 
     res = reddit.post_to_dict(post, include_children=False, limit=1)
-
-    for k in ["id", "title", "author", "url", "votes", "comments"]:
-        assert k in res
-
-    for k in ["author", "votes", "ts", "body"]:
-        assert k in res["comments"][0]
+    check_post_dict(res)
 
 
 def test_post_to_dict_no_coments(mocker: MockFixture) -> None:

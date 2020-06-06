@@ -50,6 +50,7 @@ def post_to_dict(
     }
 
     for comment in post.comments:
+        print("c")
         if limit is not None and len(data["comments"]) >= limit:
             break
 
