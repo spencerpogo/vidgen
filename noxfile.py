@@ -164,7 +164,9 @@ def mypy(session: Session) -> None:
 def pytype(session: Session) -> None:
     """Type-check using pytype."""
     args = session.posargs or ["--disable=import-error", *locations]
-    install(session, "pytype")
+    # install(session, "pytype")
+    # Weird error means can't use poetry for pytype
+    session.run("pip install pytype==2020.5.13")
     session.run("pytype", *args)
 
 
