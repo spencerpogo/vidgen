@@ -1,7 +1,6 @@
 """Console test suite."""
-from io import IOBase
 import json
-from typing import Any, Callable
+from typing import Any, Callable, IO, Union
 from unittest.mock import Mock
 
 from click.testing import CliRunner
@@ -19,7 +18,7 @@ def runner() -> CliRunner:
 
 @pytest.fixture
 def test_redditdl() -> Callable[
-    [CliRunner, MockFixture, Callable[[dict], None], str, str], None
+    [CliRunner, MockFixture, Callable[[dict], None], str], None
 ]:
     """Run redditdl with given arguments."""
 
@@ -42,7 +41,9 @@ def test_redditdl() -> Callable[
             dump = json.dump
             mock_json_dump = mocker.patch("json.dump")
 
-            def make_json_serializable(obj: Any) -> Any:
+            def make_json_serializable(
+                obj: Union[list, dict, str, int, float, bool, Mock]
+            ) -> Union[list, dict, str, int, float, bool]:
                 """Make an object JSON serializable."""
                 if isinstance(obj, list):
                     return [make_json_serializable(i) for i in obj]
@@ -53,7 +54,7 @@ def test_redditdl() -> Callable[
                     }
                 elif type(obj) in [str, int, float, bool]:
                     return obj
-                elif isinstance(obj, Mock):
+                elif isinstance(obj, Mock):  # type: ignore
                     return "asdf"
                 else:
                     raise TypeError(
@@ -61,8 +62,8 @@ def test_redditdl() -> Callable[
                         "serializable"
                     )
 
-            def fake_json_dump(obj: Any, f: IOBase, **kwargs: dict) -> None:
-                return dump(make_json_serializable(obj), f, **kwargs)
+            def fake_json_dump(obj: Any, f: IO[str], **kwargs: dict) -> None:
+                return dump(make_json_serializable(obj), f, **kwargs)  # type: ignore
 
             mock_json_dump.side_effect = fake_json_dump
 
@@ -84,7 +85,7 @@ def test_redditdl() -> Callable[
             assert result.exit_code == 0
 
             with open(output, "r") as f:
-                res = json.load(f)
+                res = json.load(f)  # type: ignore
 
             check_post_dict(res)
 
@@ -96,7 +97,7 @@ def test_redditdl_id(
     mocker: MockFixture,
     check_post_dict: Callable[[dict], None],
     test_redditdl: Callable[
-        [CliRunner, MockFixture, Callable[[dict], None], str, str], None
+        [CliRunner, MockFixture, Callable[[dict], None], str], None
     ],
 ) -> None:
     """Redditdl succeeds with a post id."""
@@ -108,7 +109,7 @@ def test_redditdl_url(
     mocker: MockFixture,
     check_post_dict: Callable[[dict], None],
     test_redditdl: Callable[
-        [CliRunner, MockFixture, Callable[[dict], None], str, str], None
+        [CliRunner, MockFixture, Callable[[dict], None], str], None
     ],
 ) -> None:
     """Redditdl succeeds with a post url."""
