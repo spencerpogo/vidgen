@@ -1,8 +1,12 @@
 name: Tests
 
 on:
-  - push
-  - pull_request
+  push:
+    paths:
+      - '**.py'
+  pull_request:
+    paths:
+      - '**.py'
 
 jobs:
   tests:
@@ -12,7 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { python-version: 3.8, os: ubuntu-latest, session: "safety" }
           - { python-version: 3.8, os: ubuntu-latest, session: "mypy" }
           - { python-version: 3.7, os: ubuntu-latest, session: "mypy" }
           - { python-version: 3.8, os: ubuntu-latest, session: "pytype" }
