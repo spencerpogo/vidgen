@@ -33,6 +33,7 @@ darglint = "^1.4.0"
 sphinx = "^3.0.4"
 sphinx-autodoc-typehints = "^1.10.3"
 codecov = "^2.1.4"
+sphinx-autobuild = "^0.7.1"
 
 [tool.poetry.scripts]
 vidgen = "vidgen.console:cli"

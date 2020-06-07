@@ -11,3 +11,9 @@ vidgen.console
 
 .. automodule:: vidgen.console
    :members:
+
+vidgen.reddit
+--------------------------
+
+.. automodule:: vidgen.reddit
+   :members:
