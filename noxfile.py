@@ -12,7 +12,7 @@ from nox.sessions import Session
 
 package = "vidgen"
 python_versions = ["3.8", "3.7"]
-nox.options.sessions = "pre-commit", "safety", "mypy", "pytype", "tests"
+nox.options.sessions = "safety", "mypy", "pytype", "tests"
 locations = "src", "tests", "noxfile.py", "docs/conf.py"
 
 
@@ -106,14 +106,6 @@ def install(session: Session, *args: str) -> None:
     poetry = Poetry(session)
     with poetry.export("--dev") as requirements:
         session.install(f"--constraint={requirements}", *args)
-
-
-@nox.session(name="pre-commit", python="3.8")
-def precommit(session: Session) -> None:
-    """Lint using pre-commit."""
-    args = session.posargs or ["run", "--all-files", "--show-diff-on-failure"]
-    install(session, "pre-commit")
-    session.run("pre-commit", *args)
 
 
 @nox.session(python="3.8")
