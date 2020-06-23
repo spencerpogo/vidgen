@@ -541,17 +541,17 @@ category = "main"
 description = "PRAW, an acronym for `Python Reddit API Wrapper`, is a python package that allows for simple access to reddit's API."
 name = "praw"
 optional = false
-python-versions = ">=3.5"
-version = "7.0.0"
+python-versions = ">3.5.3"
+version = "7.1.0"
 
 [package.dependencies]
 prawcore = ">=1.3.0,<2.0"
-update-checker = ">=0.16"
+update-checker = ">=0.17"
 websocket-client = ">=0.54.0"
 
 [package.extras]
 ci = ["coveralls"]
-dev = ["betamax (>=0.8,<0.9)", "betamax-matchers (>=0.3.0,<0.5)", "black", "flake8", "pre-commit", "pydocstyle", "pytest (>=2.7.3)", "sphinx (<3.0)", "sphinx-rtd-theme"]
+dev = ["pre-commit", "black", "flake8", "pydocstyle", "sphinx (<3.0)", "sphinx-rtd-theme", "betamax (>=0.8,<0.9)", "betamax-matchers (>=0.3.0,<0.5)", "pytest (>=2.7.3)"]
 lint = ["black", "flake8", "pydocstyle", "sphinx (<3.0)", "sphinx-rtd-theme"]
 test = ["betamax (>=0.8,<0.9)", "betamax-matchers (>=0.3.0,<0.5)", "pytest (>=2.7.3)"]
 
@@ -1290,9 +1290,8 @@ port-for = [
     {file = "port-for-0.3.1.tar.gz", hash = "sha256:b16a84bb29c2954db44c29be38b17c659c9c27e33918dec16b90d375cc596f1c"},
 ]
 praw = [
-    {file = "praw-7.0.0-py2-none-any.whl", hash = "sha256:dcdcf13b7f7ae2393afd914644bf16b254eaf5230c81adf2feafe1ec514307ca"},
-    {file = "praw-7.0.0-py3-none-any.whl", hash = "sha256:74e4b6c3f206342d05272ce1770ac7b9c48207c9a7ffea3d5251460b70f18188"},
-    {file = "praw-7.0.0.tar.gz", hash = "sha256:65129169d560800261908415ed955f3cbc63648549820b3ccce0a823ffa2fd78"},
+    {file = "praw-7.1.0-py3-none-any.whl", hash = "sha256:6b93ad1e53385c68753203ec87f4d0053b2425b09fc8813847800a542efdfe6c"},
+    {file = "praw-7.1.0.tar.gz", hash = "sha256:fb55e46203a771342da7cbe144fbcd8c61d825719ce1025bdd72112194a0228f"},
 ]
 prawcore = [
     {file = "prawcore-1.4.0-py3-none-any.whl", hash = "sha256:4c372183f1926efe8914476864705fa84234a9ca158f32046962788d6129a518"},
@@ -1378,6 +1377,7 @@ regex = [
     {file = "regex-2020.5.14.tar.gz", hash = "sha256:ce450ffbfec93821ab1fea94779a8440e10cf63819be6e176eb1973a6017aff5"},
 ]
 requests = [
+    {file = "requests-2.23.0-py2.7.egg", hash = "sha256:5d2d0ffbb515f39417009a46c14256291061ac01ba8f875b90cad137de83beb4"},
     {file = "requests-2.23.0-py2.py3-none-any.whl", hash = "sha256:43999036bfa82904b6af1d99e4882b560e5e2c68e5c4b0aa03b655f3d7d73fee"},
     {file = "requests-2.23.0.tar.gz", hash = "sha256:b3f43d496c6daba4493e7c431722aeb7dbc6288f52a6e04e7b6023b0247817e6"},
 ]
