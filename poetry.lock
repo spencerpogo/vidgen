@@ -130,7 +130,7 @@ requests = ">=2.7.9"
 [[package]]
 category = "dev"
 description = "Cross-platform colored terminal text."
-marker = "sys_platform == \"win32\" or platform_system == \"Windows\""
+marker = "platform_system == \"Windows\" or sys_platform == \"win32\""
 name = "colorama"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
@@ -685,7 +685,7 @@ marker = "python_version == \"3.7\""
 name = "pytype"
 optional = false
 python-versions = "<3.9,>=3.5"
-version = "2020.6.1"
+version = "2020.6.26"
 
 [package.dependencies]
 attrs = "*"
@@ -1025,7 +1025,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "677a143b5b0f9294886a092c3ea703ee47ed5175ffa992d6f555a852b02b8e4d"
+content-hash = "f62a0a485134d492d0bcc0bf999f8bd15b2f8b8eff2885d7fb9412432c3b2d90"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -1262,13 +1262,9 @@ ninja = [
     {file = "ninja-1.10.0-py2-none-macosx_10_6_x86_64.whl", hash = "sha256:a4b57528c5f53f3014eb2c1328c08cfe2a4339e9c24799c58f24a3481a125ef3"},
     {file = "ninja-1.10.0-py2-none-manylinux1_i686.whl", hash = "sha256:75fbe376d655487d8016dae6742d995362095a3d992cefd2d1a33ca6ea21f3e0"},
     {file = "ninja-1.10.0-py2-none-manylinux1_x86_64.whl", hash = "sha256:9e8674e93d16c890abc41957b5d9cffca645f45d263dc095bb9c96652c848c96"},
-    {file = "ninja-1.10.0-py2-none-win32.whl", hash = "sha256:1a4aa6b2fd4574114ee9171051775400d621b0bbd30f18c5f70896517c84c658"},
-    {file = "ninja-1.10.0-py2-none-win_amd64.whl", hash = "sha256:6995df9c384f91cddfe0990f5518c953227fad83dc07205f374cd4060a376a80"},
     {file = "ninja-1.10.0-py3-none-macosx_10_6_x86_64.whl", hash = "sha256:6b87f02be70881de8a7325432c3c870ba36b84f9693cfe63abe37a959d8f63b5"},
     {file = "ninja-1.10.0-py3-none-manylinux1_i686.whl", hash = "sha256:ed3e245fd6c9785370422874f28753c3d79f60a69bfc10414fa5dc8e8c666fbb"},
     {file = "ninja-1.10.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:d7a33ff0e1c7b88cbb64d88181ac90c66f69b5663396c21eb2548d935cc98250"},
-    {file = "ninja-1.10.0-py3-none-win32.whl", hash = "sha256:968f3cb84dcd2646a8661b18c5ff0f51b1ee9426b263d7bd5a565471507b69cd"},
-    {file = "ninja-1.10.0-py3-none-win_amd64.whl", hash = "sha256:83a9fb7b3501542d459011c00ee19bb43b0a267da0d311b56afb2e901df0e3a1"},
     {file = "ninja-1.10.0.tar.gz", hash = "sha256:654e739b3fe2595ee023134e3a148fb5c1c31a9894b4eb8ff7060b1a11dc7413"},
 ]
 packaging = [
@@ -1338,7 +1334,7 @@ pytest-mock = [
     {file = "pytest_mock-3.1.1-py3-none-any.whl", hash = "sha256:a9fedba70e37acf016238bb2293f2652ce19985ceb245bbd3d7f3e4032667402"},
 ]
 pytype = [
-    {file = "pytype-2020.6.1.tar.gz", hash = "sha256:08ddb9940764492b701a8985c30437239eb2c34003448cca760769264f5ff2f8"},
+    {file = "pytype-2020.6.26.tar.gz", hash = "sha256:1252c97c16c6bfcbb380b3c26c18982d86a6a75e06b1381120f110e57fdf6feb"},
 ]
 pytz = [
     {file = "pytz-2020.1-py2.py3-none-any.whl", hash = "sha256:a494d53b6d39c3c6e44c3bec237336e14305e4f29bbf800b599253057fbb79ed"},
