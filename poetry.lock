@@ -685,7 +685,7 @@ marker = "python_version == \"3.7\""
 name = "pytype"
 optional = false
 python-versions = "<3.9,>=3.5"
-version = "2020.6.26"
+version = "2020.7.14"
 
 [package.dependencies]
 attrs = "*"
@@ -1025,7 +1025,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "337464921f7d1a9b44abcf6ceff35fd9c654e742ac31f9c3fd81faa7373fe116"
+content-hash = "767597fb9504344fc5313a4448053fb84e689b6912c94af54623ba700947e4dc"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -1337,7 +1337,13 @@ pytest-mock = [
     {file = "pytest_mock-3.2.0-py3-none-any.whl", hash = "sha256:5564c7cd2569b603f8451ec77928083054d8896046830ca763ed68f4112d17c7"},
 ]
 pytype = [
-    {file = "pytype-2020.6.26.tar.gz", hash = "sha256:1252c97c16c6bfcbb380b3c26c18982d86a6a75e06b1381120f110e57fdf6feb"},
+    {file = "pytype-2020.7.14-cp35-cp35m-macosx_10_14_x86_64.whl", hash = "sha256:9d8e383ab83945df787a69c433b0bede3f69acebb5d70eec7a83a08c5637995f"},
+    {file = "pytype-2020.7.14-cp35-cp35m-manylinux2014_x86_64.whl", hash = "sha256:911ae7339fee729708136e999e9919b72c0e67f297cdbcb78ac373f5ffaea40c"},
+    {file = "pytype-2020.7.14-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:60eaabb395995c9c1b7430e54e65fbaca348cd7f975d2588e8c23773ffc96f2a"},
+    {file = "pytype-2020.7.14-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:abca0ea63898b09d444d9d42a59bf1eedc2331f89b79437663d528ab92c3c6f5"},
+    {file = "pytype-2020.7.14-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:b14a37bd0f376990404b57eff7415e175ff403e13dd429e89e15e7e12da4df12"},
+    {file = "pytype-2020.7.14-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:5d39e4a287ad6488475e1e2b1f8aae9c4a1c70c67b7ee3d1185a2ceefe811775"},
+    {file = "pytype-2020.7.14.tar.gz", hash = "sha256:31b8cc522d844971543845b2683a34ddefa83e3b6895dc970e9a8d9254219d97"},
 ]
 pytz = [
     {file = "pytz-2020.1-py2.py3-none-any.whl", hash = "sha256:a494d53b6d39c3c6e44c3bec237336e14305e4f29bbf800b599253057fbb79ed"},
