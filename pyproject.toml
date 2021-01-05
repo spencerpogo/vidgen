@@ -26,7 +26,7 @@ flake8-import-order = "^0.18.1"
 safety = "^1.9.0"
 mypy = "^0.790"
 pytype = {version = "^2020.12.2", python = "3.7"}
-flake8-annotations = "^2.4.1"
+flake8-annotations = "^2.5.0"
 flake8-docstrings = "^1.5.0"
 darglint = "^1.5.8"
 sphinx = "^3.3.1"
