@@ -323,15 +323,14 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "importlab"
-version = "0.5.1"
+version = "0.6.1"
 description = "A library to calculate python dependency graphs."
 category = "dev"
 optional = false
-python-versions = ">=2.7.0"
+python-versions = ">=3.6.0"
 
 [package.dependencies]
-networkx = "*"
-six = "*"
+networkx = ">=2"
 
 [[package]]
 name = "importlib-metadata"
@@ -637,7 +636,7 @@ dev = ["pre-commit", "tox", "pytest-asyncio"]
 
 [[package]]
 name = "pytype"
-version = "2020.12.2"
+version = "2021.1.28"
 description = "Python type inferencer"
 category = "dev"
 optional = false
@@ -645,10 +644,11 @@ python-versions = "<3.9,>=3.6"
 
 [package.dependencies]
 attrs = "*"
-importlab = ">=0.5.1"
+importlab = ">=0.6.1"
 ninja = ">=1.10.0.post2"
 pyyaml = ">=3.11"
 six = "*"
+toml = "*"
 typed_ast = "*"
 
 [[package]]
@@ -956,7 +956,7 @@ testing = ["jaraco.itertools", "func-timeout"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "516214805c60268d32f3a822074ecacd71933ca94828ef1b7680c57ff533209c"
+content-hash = "75812c8bb8e6ea0479fa78410837c171ff99c635ab35d073b9d9f556f8ffc0fb"
 
 [metadata.files]
 alabaster = [
@@ -1106,7 +1106,7 @@ imagesize = [
     {file = "imagesize-1.2.0.tar.gz", hash = "sha256:b1f6b5a4eab1f73479a50fb79fcf729514a900c341d8503d62a62dbc4127a2b1"},
 ]
 importlab = [
-    {file = "importlab-0.5.1.tar.gz", hash = "sha256:d855350d19dc10a17aabd2fe6f4b428ff1a936071f692fbf686a73694d26a51c"},
+    {file = "importlab-0.6.1.tar.gz", hash = "sha256:056503329df1ba8f6291a4b548042aa18620ad91d39388ba58044f0fd44ff83e"},
 ]
 importlib-metadata = [
     {file = "importlib_metadata-3.1.1-py3-none-any.whl", hash = "sha256:6112e21359ef8f344e7178aa5b72dc6e62b38b0d008e6d3cb212c5b84df72013"},
@@ -1259,13 +1259,13 @@ pytest-mock = [
     {file = "pytest_mock-3.3.1-py3-none-any.whl", hash = "sha256:024e405ad382646318c4281948aadf6fe1135632bea9cc67366ea0c4098ef5f2"},
 ]
 pytype = [
-    {file = "pytype-2020.12.2-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:41b5cdbafd8daf00ec00647c881f275addfa432910a4c94bf732ad38a00f9fb9"},
-    {file = "pytype-2020.12.2-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:083f884920274e6d44438740948749937a1410af3d832c39823c7dfd1255da6c"},
-    {file = "pytype-2020.12.2-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:d78cd62fd9b4c3ff2b17052cb3f57884ae6ad6bd4e3d422ea200059858f5c162"},
-    {file = "pytype-2020.12.2-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:bc6b9a958aa6845b4eeef3915dd9fcf45e228669083c250b638e2ea7d4b1997b"},
-    {file = "pytype-2020.12.2-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:4cac375f1a8b4611c34817d7e047ff9448937eced9386f26097244246bd64a7e"},
-    {file = "pytype-2020.12.2-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:9525fc548b6c4a198051d566f745cb16f033ec09b6a4c38079acd94e69f491c4"},
-    {file = "pytype-2020.12.2.tar.gz", hash = "sha256:79e7f3711a598ab8467495b5bc8c9e7d5e70c830eeed22e3b7baf9d56a540e77"},
+    {file = "pytype-2021.1.28-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:be764b1a8e8bc77aaee6b665302614435c00256c9914423c7cb0db8345502f7b"},
+    {file = "pytype-2021.1.28-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:76fd1c8c9677596463f4f06a7b78726caccf1a4cf793d3afb08465800e4015af"},
+    {file = "pytype-2021.1.28-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:df0b1a002fa92b20978a3ec8f09be9e92c64cfdeb9798399d25cf8b90cb6e80a"},
+    {file = "pytype-2021.1.28-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:5121cf6a5439a875fcb8dd4b7847c556767f0bb495c75e091069dd2b20121d41"},
+    {file = "pytype-2021.1.28-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:fc00cbd1c186ac536f444c2e743d650e59e05011a532266d778b544736cf4da3"},
+    {file = "pytype-2021.1.28-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:fa805000a3d09c5cbc85d2fc6ed9e0c5dcac19d63658604ebb7771526bf8160b"},
+    {file = "pytype-2021.1.28.tar.gz", hash = "sha256:69ffaf8ffdb29cfa69aec8c1bbdc6052a8ab87f24278635884f61253a21c7a90"},
 ]
 pytz = [
     {file = "pytz-2020.1-py2.py3-none-any.whl", hash = "sha256:a494d53b6d39c3c6e44c3bec237336e14305e4f29bbf800b599253057fbb79ed"},
